@@ -13,10 +13,11 @@ def about(request) :
 def password(request) :
     characters = list('abcdefghijklmnopqrstuvwxyz')
     
+    default_length = 12
     param_dict = {'upp' : request.GET.get('uppercase'),
                   'spec' : request.GET.get('special'),
                   'num' : request.GET.get('numbers'),
-                  'len' : request.GET.get('length')}
+                  'len' : request.GET.get('length'), default_length}
 
     if param_dict['upp'] :
         characters.extend(list('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
@@ -27,7 +28,6 @@ def password(request) :
     if param_dict['num'] :
         characters.extend(list('1234567890'))
 
-    default_length = 12
     length = int(param_dict['len'])
     
     thepassword = ''
